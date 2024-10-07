@@ -45,7 +45,7 @@ phases:
         }
 
         # Get parent stack name
-        parent_stack_name="NetworkStack"  # Replace with your parent stack name
+        parent_stack_name="PipelineNetworkStack"  # Replace with your parent stack name
 
         # Detect drift for parent stack
         detect_drift $parent_stack_name

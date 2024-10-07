@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: VPC Stack
+
+Parameters:
+  VpcName:
+    Type: String
+    Description: Name of the VPC
+  VpcCidr:
+    Type: String
+    Description: CIDR block for the VPC
+
+Resources:
+  MyVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !Ref VpcCidr
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: !Ref VpcName
+
+Outputs:
+  VpcId:
+    Description: The ID of the VPC
+    Value: !Ref MyVPC
+    Export:
+      Name: VPCStack-VpcId

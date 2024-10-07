@@ -1,0 +1,7 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - aws s3 cp templates/vpc.yaml s3://cfn-nested-sample/network/
+      - aws s3 cp templates/subnet.yaml s3://cfn-nested-sample/network/

@@ -1,0 +1,83 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Subnet Stack for Tokyo Region
+
+Parameters:
+  VpcId:
+    Type: String
+    Description: The VPC ID where the subnets will be created
+  AvailabilityZone1:
+    Type: String
+    Description: Availability Zone for the first subnet
+  AvailabilityZone2:
+    Type: String
+    Description: Availability Zone for the second subnet
+  AvailabilityZone3:
+    Type: String
+    Description: Availability Zone for the third subnet
+  SubnetName1:
+    Type: String
+    Description: Name of the first subnet
+  SubnetName2:
+    Type: String
+    Description: Name of the second subnet
+  SubnetName3:
+    Type: String
+    Description: Name of the third subnet
+  SubnetCidr1:
+    Type: String
+    Description: CIDR block for the first subnet
+  SubnetCidr2:
+    Type: String
+    Description: CIDR block for the second subnet
+  SubnetCidr3:
+    Type: String
+    Description: CIDR block for the third subnet
+
+Resources:
+  Subnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VpcId
+      CidrBlock: !Ref SubnetCidr1
+      AvailabilityZone: !Ref AvailabilityZone1
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: !Ref SubnetName1
+  Subnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VpcId
+      CidrBlock: !Ref SubnetCidr2
+      AvailabilityZone: !Ref AvailabilityZone2
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: !Ref SubnetName2
+  Subnet3:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VpcId
+      CidrBlock: !Ref SubnetCidr3
+      AvailabilityZone: !Ref AvailabilityZone3
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: !Ref SubnetName3
+
+Outputs:
+  SubnetId1:
+    Description: The ID of the first Subnet
+    Value: !Ref Subnet1
+    Export:
+      Name: SubnetStack-SubnetId1
+  SubnetId2:
+    Description: The ID of the second Subnet
+    Value: !Ref Subnet2
+    Export:
+      Name: SubnetStack-SubnetId2
+  SubnetId3:
+    Description: The ID of the third Subnet
+    Value: !Ref Subnet3
+    Export:
+      Name: SubnetStack-SubnetId3

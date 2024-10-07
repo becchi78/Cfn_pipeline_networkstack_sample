@@ -1,0 +1,87 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Cfn sample Network Stack
+
+Parameters:
+  VpcName:
+    Type: String
+    Description: Name of the VPC
+  VpcCidr:
+    Type: String
+    Description: CIDR block for the VPC
+  AvailabilityZone1:
+    Type: String
+    Description: Availability Zone for the first subnet
+  AvailabilityZone2:
+    Type: String
+    Description: Availability Zone for the second subnet
+  AvailabilityZone3:
+    Type: String
+    Description: Availability Zone for the third subnet
+  SubnetName1:
+    Type: String
+    Description: Name of the first subnet
+  SubnetName2:
+    Type: String
+    Description: Name of the second subnet
+  SubnetName3:
+    Type: String
+    Description: Name of the third subnet
+  SubnetCidr1:
+    Type: String
+    Description: CIDR block for the first subnet
+  SubnetCidr2:
+    Type: String
+    Description: CIDR block for the second subnet
+  SubnetCidr3:
+    Type: String
+    Description: CIDR block for the third subnet
+  S3BucketURL:
+    Type: String
+    Description: URL of the S3 bucket containing the templates
+
+Resources:
+  VPCStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: !Sub "${S3BucketURL}/vpc.yaml"
+      Parameters:
+        VpcCidr: !Ref VpcCidr
+        VpcName: !Ref VpcName
+
+  SubnetStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: !Sub "${S3BucketURL}/subnet.yaml"
+      Parameters:
+        VpcId: !GetAtt VPCStack.Outputs.VpcId
+        AvailabilityZone1: !Ref AvailabilityZone1
+        AvailabilityZone2: !Ref AvailabilityZone2
+        AvailabilityZone3: !Ref AvailabilityZone3
+        SubnetName1: !Ref SubnetName1
+        SubnetCidr1: !Ref SubnetCidr1
+        SubnetName2: !Ref SubnetName2
+        SubnetCidr2: !Ref SubnetCidr2
+        SubnetName3: !Ref SubnetName3
+        SubnetCidr3: !Ref SubnetCidr3
+
+Outputs:
+  VpcId:
+    Description: The ID of the VPC
+    Value: !GetAtt VPCStack.Outputs.VpcId
+    Export:
+      Name: NetworkStack-VpcId
+  SubnetId1:
+    Description: The ID of the first Subnet
+    Value: !GetAtt SubnetStack.Outputs.SubnetId1
+    Export:
+      Name: NetworkStack-SubnetId1
+  SubnetId2:
+    Description: The ID of the second Subnet
+    Value: !GetAtt SubnetStack.Outputs.SubnetId2
+    Export:
+      Name: NetworkStack-SubnetId2
+  SubnetId3:
+    Description: The ID of the third Subnet
+    Value: !GetAtt SubnetStack.Outputs.SubnetId3
+    Export:
+      Name: NetworkStack-SubnetId3

@@ -1,0 +1,16 @@
+{
+  "Parameters": {
+    "AvailabilityZone1": "ap-northeast-1a",
+    "AvailabilityZone2": "ap-northeast-1c",
+    "AvailabilityZone3": "ap-northeast-1d",
+    "VpcName": "MyVPC",
+    "VpcCidr": "10.10.0.0/16",
+    "SubnetName1": "MySubnet1",
+    "SubnetCidr1": "10.10.1.0/24",
+    "SubnetName2": "MySubnet2",
+    "SubnetCidr2": "10.10.2.0/24",
+    "SubnetName3": "MySubnet3",
+    "SubnetCidr3": "10.10.3.0/24",
+    "S3BucketURL": "https://cfn-nested-sample.s3.ap-northeast-1.amazonaws.com/network"
+  }
+}

@@ -21,8 +21,8 @@ Resources:
           Value: !Ref VpcName
 
 Outputs:
-  VpcId:
+  PipelineVpcId:
     Description: The ID of the VPC
     Value: !Ref MyVPC
     Export:
-      Name: VPCStack-VpcId
+      Name: PipelineVPCStack-VpcId

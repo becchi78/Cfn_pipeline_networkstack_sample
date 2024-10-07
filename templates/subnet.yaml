@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: "2010-09-09"
 Description: Subnet Stack for Tokyo Region
 
 Parameters:
-  VpcId:
+  PipelineVpcId:
     Type: String
     Description: The VPC ID where the subnets will be created
   AvailabilityZone1:
@@ -37,7 +37,7 @@ Resources:
   Subnet1:
     Type: AWS::EC2::Subnet
     Properties:
-      VpcId: !Ref VpcId
+      VpcId: !Ref PipelineVpcId
       CidrBlock: !Ref SubnetCidr1
       AvailabilityZone: !Ref AvailabilityZone1
       MapPublicIpOnLaunch: true
@@ -47,7 +47,7 @@ Resources:
   Subnet2:
     Type: AWS::EC2::Subnet
     Properties:
-      VpcId: !Ref VpcId
+      VpcId: !Ref PipelineVpcId
       CidrBlock: !Ref SubnetCidr2
       AvailabilityZone: !Ref AvailabilityZone2
       MapPublicIpOnLaunch: true
@@ -57,7 +57,7 @@ Resources:
   Subnet3:
     Type: AWS::EC2::Subnet
     Properties:
-      VpcId: !Ref VpcId
+      VpcId: !Ref PipelineVpcId
       CidrBlock: !Ref SubnetCidr3
       AvailabilityZone: !Ref AvailabilityZone3
       MapPublicIpOnLaunch: true
@@ -66,18 +66,18 @@ Resources:
           Value: !Ref SubnetName3
 
 Outputs:
-  SubnetId1:
+  PipelineSubnetId1:
     Description: The ID of the first Subnet
     Value: !Ref Subnet1
     Export:
-      Name: SubnetStack-SubnetId1
-  SubnetId2:
+      Name: PipelineSubnetStack-SubnetId1
+  PipelineSubnetId2:
     Description: The ID of the second Subnet
     Value: !Ref Subnet2
     Export:
-      Name: SubnetStack-SubnetId2
-  SubnetId3:
+      Name: PipelineSubnetStack-SubnetId2
+  PipelineSubnetId3:
     Description: The ID of the third Subnet
     Value: !Ref Subnet3
     Export:
-      Name: SubnetStack-SubnetId3
+      Name: PipelineSubnetStack-SubnetId3

@@ -24,3 +24,8 @@ aws cloudformation create-stack \
 ```bash
 aws cloudformation delete-stack --stack-name NetworkStack
 ```
+
+```bash
+aws s3 cp templates/subnet.yaml s3://cfn-nested-sample/network/pipelinesubnet.yaml
+aws s3 cp templates/vpc.yaml s3://cfn-nested-sample/network/pipelinevpc.yaml
+```

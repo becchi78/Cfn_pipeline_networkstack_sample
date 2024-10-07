@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: Cfn sample Network Stack
+Description: Cfn sample PipelineNetwork Stack
 
 Parameters:
   VpcName:
@@ -43,7 +43,7 @@ Resources:
   VPCStack:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: !Sub "${S3BucketURL}/vpc.yaml"
+      TemplateURL: !Sub "${S3BucketURL}/pipelinevpc.yaml"
       Parameters:
         VpcCidr: !Ref VpcCidr
         VpcName: !Ref VpcName
@@ -51,9 +51,9 @@ Resources:
   SubnetStack:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: !Sub "${S3BucketURL}/subnet.yaml"
+      TemplateURL: !Sub "${S3BucketURL}/pipelinesubnet.yaml"
       Parameters:
-        VpcId: !GetAtt VPCStack.Outputs.VpcId
+        PipelineVpcId: !GetAtt VPCStack.Outputs.PipelineVpcId
         AvailabilityZone1: !Ref AvailabilityZone1
         AvailabilityZone2: !Ref AvailabilityZone2
         AvailabilityZone3: !Ref AvailabilityZone3
@@ -65,23 +65,23 @@ Resources:
         SubnetCidr3: !Ref SubnetCidr3
 
 Outputs:
-  VpcId:
+  PipelineVpcId:
     Description: The ID of the VPC
-    Value: !GetAtt VPCStack.Outputs.VpcId
+    Value: !GetAtt VPCStack.Outputs.PipelineVpcId
     Export:
-      Name: NetworkStack-VpcId
-  SubnetId1:
+      Name: PipelineNetworkStack-VpcId
+  PipelineSubnetId1:
     Description: The ID of the first Subnet
-    Value: !GetAtt SubnetStack.Outputs.SubnetId1
+    Value: !GetAtt SubnetStack.Outputs.PipelineSubnetId1
     Export:
-      Name: NetworkStack-SubnetId1
-  SubnetId2:
+      Name: PipelineNetworkStack-SubnetId1
+  PipelineSubnetId2:
     Description: The ID of the second Subnet
-    Value: !GetAtt SubnetStack.Outputs.SubnetId2
+    Value: !GetAtt SubnetStack.Outputs.PipelineSubnetId2
     Export:
-      Name: NetworkStack-SubnetId2
-  SubnetId3:
+      Name: PipelineNetworkStack-SubnetId2
+  PipelineSubnetId3:
     Description: The ID of the third Subnet
-    Value: !GetAtt SubnetStack.Outputs.SubnetId3
+    Value: !GetAtt SubnetStack.Outputs.PipelineSubnetId3
     Export:
-      Name: NetworkStack-SubnetId3
+      Name: PipelineNetworkStack-SubnetId3

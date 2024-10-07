@@ -5,11 +5,11 @@
     "AvailabilityZone3": "ap-northeast-1d",
     "VpcName": "PipelineVPC",
     "VpcCidr": "10.20.0.0/16",
-    "SubnetName1": "MySubnet1",
+    "SubnetName1": "PipelineMySubnet1",
     "SubnetCidr1": "10.20.1.0/24",
-    "SubnetName2": "MySubnet2",
+    "SubnetName2": "PipelineMySubnet2",
     "SubnetCidr2": "10.20.2.0/24",
-    "SubnetName3": "MySubnet3",
+    "SubnetName3": "PipelineMySubnet3",
     "SubnetCidr3": "10.20.3.0/24",
     "S3BucketURL": "https://cfn-nested-sample.s3.ap-northeast-1.amazonaws.com/network"
   }

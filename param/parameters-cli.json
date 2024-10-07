@@ -1,8 +1,8 @@
 [
-  { "ParameterKey": "AvailabilityZone1", "ParameterValue":"ap-northeast-1a"},
-  { "ParameterKey": "AvailabilityZone2", "ParameterValue":"ap-northeast-1c"},
-  { "ParameterKey": "AvailabilityZone3", "ParameterValue":"ap-northeast-1d"},
-  { "ParameterKey": "VpcName", "ParameterValue": "MyVPC" },
+  { "ParameterKey": "AvailabilityZone1", "ParameterValue": "ap-northeast-1a" },
+  { "ParameterKey": "AvailabilityZone2", "ParameterValue": "ap-northeast-1c" },
+  { "ParameterKey": "AvailabilityZone3", "ParameterValue": "ap-northeast-1d" },
+  { "ParameterKey": "VpcName", "ParameterValue": "PipelineVPC" },
   { "ParameterKey": "VpcCidr", "ParameterValue": "10.10.0.0/16" },
   { "ParameterKey": "SubnetName1", "ParameterValue": "MySubnet1" },
   { "ParameterKey": "SubnetCidr1", "ParameterValue": "10.10.1.0/24" },

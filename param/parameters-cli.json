@@ -12,6 +12,6 @@
   { "ParameterKey": "SubnetCidr3", "ParameterValue": "10.10.3.0/24" },
   {
     "ParameterKey": "S3BucketURL",
-    "ParameterValue": "https://cfn-nested-sample.s3.ap-northeast-1.amazonaws.com/network"
+    "ParameterValue": "https://cfn-networkstack-pipeline-sample.s3.ap-northeast-1.amazonaws.com/network"
   }
 ]

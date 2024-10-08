@@ -12,10 +12,10 @@ phases:
         detect_drift() {
           local stack_name=$1
           echo "Detecting drift for stack: $stack_name"
-          
+
           drift_detection_id=$(aws cloudformation detect-stack-drift --stack-name $stack_name --query StackDriftDetectionId --output text)
           echo "Drift Detection ID for $stack_name: $drift_detection_id"
-          
+
           while true; do
             detection_status=$(aws cloudformation describe-stack-drift-detection-status --stack-drift-detection-id $drift_detection_id --query DetectionStatus --output text)
             echo "Detection Status for $stack_name: $detection_status"
@@ -27,7 +27,7 @@ phases:
             fi
             sleep 10
           done
-          
+
           drift_status=$(aws cloudformation describe-stack-drift-detection-status --stack-drift-detection-id $drift_detection_id --query StackDriftStatus --output text)
           echo "Stack Drift Status for $stack_name: $drift_status"
           
@@ -45,7 +45,7 @@ phases:
         }
 
         # Get parent stack name
-        parent_stack_name="NetworkStackPipelineTest"  # Replace with your parent stack name
+        parent_stack_name="PipelineNetworkStack"  # Replace with your parent stack name
 
         # Detect drift for parent stack
         detect_drift $parent_stack_name

@@ -3,5 +3,5 @@ version: 0.2
 phases:
   build:
     commands:
-      - aws s3 cp templates/vpc.yaml s3://cfn-networkstack-pipeline-sample/network/pipelinevpc.yaml
-      - aws s3 cp templates/subnet.yaml s3://cfn-networkstack-pipeline-sample/network/pipelinesubnet.yaml
+      - aws s3 cp templates/vpc.yaml s3://cfn-pipeline-networkstack-sample/network/pipelinevpc.yaml
+      - aws s3 cp templates/subnet.yaml s3://cfn-pipeline-networkstack-sample/network/pipelinesubnet.yaml

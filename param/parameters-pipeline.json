@@ -11,6 +11,6 @@
     "SubnetCidr2": "10.20.2.0/24",
     "SubnetName3": "PipelineMySubnet3",
     "SubnetCidr3": "10.20.3.0/24",
-    "S3BucketURL": "https://cfn-nested-sample.s3.ap-northeast-1.amazonaws.com/network"
+    "S3BucketURL": "https://cfn-pipeline-nestedstack-sample.s3.ap-northeast-1.amazonaws.com/network"
   }
 }

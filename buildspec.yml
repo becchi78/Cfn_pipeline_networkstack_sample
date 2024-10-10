@@ -3,5 +3,5 @@ version: 0.2
 phases:
   build:
     commands:
-      - aws s3 cp templates/vpc.yaml s3://cfn-pipeline-nestedstack-sample/network/pipelinevpc.yaml
-      - aws s3 cp templates/subnet.yaml s3://cfn-pipeline-nestedstack-sample/network/pipelinesubnet.yaml
+      - aws s3 cp templates/pipelinevpc.yaml s3://cfn-pipeline-nestedstack-sample/network/pipelinevpc.yaml
+      - aws s3 cp templates/pipelinesubnet.yaml s3://cfn-pipeline-nestedstack-sample/network/pipelinesubnet.yaml

@@ -22,7 +22,7 @@ aws cloudformation create-stack \
 ## 削除
 
 ```bash
-aws cloudformation delete-stack --stack-name NetworkStack
+aws cloudformation delete-stack --stack-name PipelineNetworkStack
 ```
 
 ```bash

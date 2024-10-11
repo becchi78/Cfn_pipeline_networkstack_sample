@@ -1,20 +1,13 @@
 # Cfn_pipeline_networkstack_sample
 
-## Dummy デプロイ
-
-```bash
-aws cloudformation create-stack \
-  --stack-name PipelineNetworkStack \
-  --template-body file://dummy.yaml \
-  --capabilities CAPABILITY_IAM
-```
+Cfn_pipeline_sampleでデプロイするnetworktemplateです。
 
 ## 手動デプロイ
 
 ```bash
 aws cloudformation deploy \
   --stack-name PipelineNetworkStack \
-  --template-body file://root-template.yaml \
+  --template-file root-template.yaml \
   --parameters file://param/parameters.json \
   --capabilities CAPABILITY_IAM
 ```

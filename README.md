@@ -12,10 +12,10 @@ aws cloudformation create-stack \
 ## 手動デプロイ
 
 ```bash
-aws cloudformation create-stack \
+aws cloudformation deploy \
   --stack-name PipelineNetworkStack \
   --template-body file://root-template.yaml \
-  --parameters file://param/parameters-cli.json \
+  --parameters file://param/parameters.json \
   --capabilities CAPABILITY_IAM
 ```
 

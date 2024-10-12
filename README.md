@@ -1,6 +1,25 @@
 # Cfn_pipeline_networkstack_sample
 
-Cfn_pipeline_sampleでデプロイするnetworktemplateです。
+Cfn のネステッドスタックとクロススタック参照のサンプル（network）
+
+CodePipeline による CI/CD を実施するためのファイルと GitHub Actions による Linting 用の workflow も含む。
+
+- .github/workflow/cfn-static-analysis.yaml Github Actions の定義ファイル
+- param/parameters.json 設定ファイル
+- templates/pipelinesubnet.yaml Subnet 用 Cfn テンプレートファイル
+- templates/pipelinevpc.yaml VPC 用 Cfn テンプレートファイル
+- buildspec_driftdetection.yaml ドリフト検知を行う buildspec ファイル
+- buildspec.yaml 子 template を S3 にアップロードする buildspec ファイル
+- root-template.yaml 親テンプレートファイル
+
+## 手動デプロイの準備
+
+templates/にある yaml はあらかじめ S3 の cfn-nested-sample/network に置いておく。
+
+```bash
+aws s3 cp ./templates/pipelinevpc.yaml s3://cfn-pipeline-nestedstack-sample/network/
+aws s3 cp ./templates/pipelinesubnet.yaml s3://cfn-pipeline-nestedstack-sample/network/
+```
 
 ## 手動デプロイ
 
@@ -8,7 +27,7 @@ Cfn_pipeline_sampleでデプロイするnetworktemplateです。
 aws cloudformation deploy \
   --stack-name PipelineNetworkStack \
   --template-file root-template.yaml \
-  --parameters file://param/parameters.json \
+  --parameter-overrides file://param/parameters.json \
   --capabilities CAPABILITY_IAM
 ```
 
@@ -18,7 +37,11 @@ aws cloudformation deploy \
 aws cloudformation delete-stack --stack-name PipelineNetworkStack
 ```
 
-```bash
-aws s3 cp templates/subnet.yaml s3://cfn-networkstack-pipeline-sample/network/pipelinesubnet.yaml
-aws s3 cp templates/vpc.yaml s3://cfn-networkstack-pipeline-sample/network/pipelinevpc.yaml
-```
+## Output
+
+| キー      | 説明                        | エクスポート名         |
+| --------- | --------------------------- | ---------------------- |
+| SubnetId1 | The ID of the first Subnet  | NetworkStack-SubnetId1 |
+| SubnetId2 | The ID of the second Subnet | NetworkStack-SubnetId2 |
+| SubnetId3 | The ID of the third Subnet  | NetworkStack-SubnetId3 |
+| VpcId     | The ID of the VPC           | NetworkStack-VpcId     |

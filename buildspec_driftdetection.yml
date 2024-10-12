@@ -8,6 +8,9 @@ phases:
         #!/bin/bash
         set -e
 
+        # Get parent stack name
+        parent_stack_name="PipelineNetworkStack"  # Replace with your parent stack name
+
         # Function to detect drift for a single stack
         detect_drift() {
           local stack_name=$1
@@ -43,9 +46,6 @@ phases:
             return 1
           fi
         }
-
-        # Get parent stack name
-        parent_stack_name="PipelineNetworkStack"  # Replace with your parent stack name
 
         # Detect drift for parent stack
         detect_drift $parent_stack_name

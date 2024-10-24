@@ -4,13 +4,23 @@ Cfn のネステッドスタックとクロススタック参照のサンプル�
 
 CodePipeline による CI/CD を実施するためのファイルと GitHub Actions による Linting 用の workflow も含む。
 
-- .github/workflow/cfn-static-analysis.yaml Github Actions の定義ファイル
-- parameters/parameters.json 設定ファイル
-- templates/pipelinesubnet.yaml Subnet 用 Cfn テンプレートファイル
-- templates/pipelinevpc.yaml VPC 用 Cfn テンプレートファイル
-- templates/root-template.yaml 親テンプレートファイル
-- buildspec_driftdetection.yaml ドリフト検知を行う buildspec ファイル
-- buildspec.yaml 子 template を S3 にアップロードする buildspec ファイル
+Cfn_Pipeline_NetworkStack_Sample/
+│
+├── .github/
+│ └── workflows
+│ └── cfn-static-analysis.yaml ・・・GitHub Actions でコードの静的解析を行うための定義ファイル
+│
+├── parameters/
+│ └── parameters/parameters.json ・・・ネットワークスタックのパラメータファイル
+│
+├── templates/
+│ │── pipelinesubnet.yaml ・・・Subnet 用 Cfn テンプレートファイル
+│ │── pipelinevpc.yaml ・・・VPC 用 Cfn テンプレートファイル
+│ └── root-template.yaml ・・・親テンプレートファイル
+│
+├── buildspec_driftdetection.yaml ・・・ドリフト検知を行う buildspec ファイル
+├── buildspec.yaml ・・・S3 に子テンプレートをアップロードする buildspec ファイル
+└── README.md ・・・この README
 
 ## 手動デプロイの準備
 

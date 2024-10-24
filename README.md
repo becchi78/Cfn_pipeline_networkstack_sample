@@ -5,7 +5,7 @@ Cfn のネステッドスタックとクロススタック参照のサンプル�
 CodePipeline による CI/CD を実施するためのファイルと GitHub Actions による Linting 用の workflow も含む。
 
 - .github/workflow/cfn-static-analysis.yaml Github Actions の定義ファイル
-- param/parameters.json 設定ファイル
+- parameters/parameters.json 設定ファイル
 - templates/pipelinesubnet.yaml Subnet 用 Cfn テンプレートファイル
 - templates/pipelinevpc.yaml VPC 用 Cfn テンプレートファイル
 - templates/root-template.yaml 親テンプレートファイル

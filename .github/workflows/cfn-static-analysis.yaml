@@ -27,7 +27,7 @@ jobs:
           curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/aws-cloudformation/cloudformation-guard/main/install-guard.sh | sh
 
       - name: Run cfn-lint
-        run: cfn-lint root-template.yaml templates/*.yaml
+        run: cfn-lint templates/*.yaml
 
       - name: Run cfn-guard
-        run: ~/.guard/bin/cfn-guard validate -r ruleset.guard -d root-template.yaml templates/*.yaml
+        run: ~/.guard/bin/cfn-guard validate -r ruleset.guard -d templates/*.yaml

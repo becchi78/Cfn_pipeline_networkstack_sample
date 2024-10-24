@@ -1,32 +1,33 @@
 # Cfn_pipeline_networkstack_sample
 
-Cfn のネステッドスタックとクロススタック参照のサンプル（network）
+CI/CD Pipeline のデプロイ対象のスタックのサンプルです。（network）
+CodePipeline による CI/CD を実施するためのファイルと GitHub Actions による Linting 用の workflow を含んでいます。
 
-CodePipeline による CI/CD を実施するためのファイルと GitHub Actions による Linting 用の workflow も含む。
+## 構成
 
 ```bash
 Cfn_Pipeline_NetworkStack_Sample/
 │
 ├── .github/
-│ └── workflows
-│ └── cfn-static-analysis.yaml ・・・GitHub Actions でコードの静的解析を行うための定義ファイル
+│   └── workflows
+│       └── cfn-static-analysis.yaml ・・・GitHub Actionsでコードの静的解析を行うための定義ファイル
 │
 ├── parameters/
-│ └── parameters/parameters.json ・・・ネットワークスタックのパラメータファイル
+│   └──  parameters/parameters.json ・・・ネットワークスタックのパラメータファイル
 │
 ├── templates/
-│ │── pipelinesubnet.yaml ・・・Subnet 用 Cfn テンプレートファイル
-│ │── pipelinevpc.yaml ・・・VPC 用 Cfn テンプレートファイル
-│ └── root-template.yaml ・・・親テンプレートファイル
+│   │── pipelinesubnet.yaml ・・・Subnet 用 Cfn テンプレートファイル
+│   │── pipelinevpc.yaml ・・・VPC 用 Cfn テンプレートファイル
+│   └── root-template.yaml ・・・親テンプレートファイル
 │
 ├── buildspec_driftdetection.yaml ・・・ドリフト検知を行う buildspec ファイル
-├── buildspec.yaml ・・・S3 に子テンプレートをアップロードする buildspec ファイル
-└── README.md ・・・この README
+├── buildspec.yaml ・・・S3に子テンプレートをアップロードする buildspec ファイル
+└── README.md ・・・このREADME
 ```
 
 ## 手動デプロイの準備
 
-templates/にある yaml はあらかじめ S3 の cfn-nested-sample/network に置いておく。
+templates/にある yaml はあらかじめ S3 の所定のバケット（例として cfn-nested-sample/network） に置いておきます。
 
 ```bash
 aws s3 cp ./templates/pipelinevpc.yaml s3://cfn-pipeline-nestedstack-sample/network/
@@ -37,7 +38,7 @@ aws s3 cp ./templates/pipelinesubnet.yaml s3://cfn-pipeline-nestedstack-sample/n
 
 ```bash
 aws cloudformation deploy \
-  --stack-name Pipeline-NetworkStack \
+  --stack-name PipelineNetworkStack \
   --template-file file://templates/root-template.yaml \
   --parameter-overrides file://parameters/parameters.json \
   --capabilities CAPABILITY_IAM

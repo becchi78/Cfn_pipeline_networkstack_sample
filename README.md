@@ -4,6 +4,7 @@ Cfn のネステッドスタックとクロススタック参照のサンプル�
 
 CodePipeline による CI/CD を実施するためのファイルと GitHub Actions による Linting 用の workflow も含む。
 
+```bash
 Cfn_Pipeline_NetworkStack_Sample/
 │
 ├── .github/
@@ -21,6 +22,7 @@ Cfn_Pipeline_NetworkStack_Sample/
 ├── buildspec_driftdetection.yaml ・・・ドリフト検知を行う buildspec ファイル
 ├── buildspec.yaml ・・・S3 に子テンプレートをアップロードする buildspec ファイル
 └── README.md ・・・この README
+```
 
 ## 手動デプロイの準備
 

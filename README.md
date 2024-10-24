@@ -8,9 +8,9 @@ CodePipeline による CI/CD を実施するためのファイルと GitHub Acti
 - param/parameters.json 設定ファイル
 - templates/pipelinesubnet.yaml Subnet 用 Cfn テンプレートファイル
 - templates/pipelinevpc.yaml VPC 用 Cfn テンプレートファイル
+- templates/root-template.yaml 親テンプレートファイル
 - buildspec_driftdetection.yaml ドリフト検知を行う buildspec ファイル
 - buildspec.yaml 子 template を S3 にアップロードする buildspec ファイル
-- root-template.yaml 親テンプレートファイル
 
 ## 手動デプロイの準備
 
@@ -26,8 +26,8 @@ aws s3 cp ./templates/pipelinesubnet.yaml s3://cfn-pipeline-nestedstack-sample/n
 ```bash
 aws cloudformation deploy \
   --stack-name PipelineNetworkStack \
-  --template-file root-template.yaml \
-  --parameter-overrides file://param/parameters.json \
+  --template-file file://templates/root-template.yaml \
+  --parameter-overrides file://parameters/parameters.json \
   --capabilities CAPABILITY_IAM
 ```
 

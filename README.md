@@ -25,7 +25,7 @@ aws s3 cp ./templates/pipelinesubnet.yaml s3://cfn-pipeline-nestedstack-sample/n
 
 ```bash
 aws cloudformation deploy \
-  --stack-name PipelineNetworkStack \
+  --stack-name Pipeline-NetworkStack \
   --template-file file://templates/root-template.yaml \
   --parameter-overrides file://parameters/parameters.json \
   --capabilities CAPABILITY_IAM

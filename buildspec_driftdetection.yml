@@ -9,7 +9,7 @@ phases:
         set -e
 
         # Get parent stack name
-        parent_stack_name="PipelineNetworkStack"  # Replace with your parent stack name
+        parent_stack_name="Pipeline-NetworkStack"  # Replace with your parent stack name
 
         # Function to detect drift for a single stack
         detect_drift() {
